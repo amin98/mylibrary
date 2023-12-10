@@ -77,14 +77,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //check if the user has the role title of 'admin'
-    public function isAdmin()
+    public function isAdmin(): bool
     {
-        // Check if the 'role' relationship is loaded
-        if ($this->relationLoaded('role') && $this->role) {
-            return $this->role->title === 'admin';
-        }
-
-        return false;
+        return $this->role->title === 'admin';
     }
 
 
