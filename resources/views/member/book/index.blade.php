@@ -2,45 +2,46 @@
 
 @section('content')
     <div class="flex justify-center mt-2.5 gap-x-4 px-2">
-        <div class="inline lg:hidden xl:hidden 2xl:hidden bg-gray-200  rounded-xl  overflow-y-hidden" style="box-shadow: inset 12px 0 15px -4px rgb(184 184 184 / 80%), inset -12px 0 8px -4px rgb(184 184 184 / 80%)">
+        <div class="inline lg:hidden xl:hidden 2xl:hidden bg-gray-200  rounded-xl  overflow-y-hidden"
+             style="box-shadow: inset 12px 0 15px -4px rgb(184 184 184 / 80%), inset -12px 0 8px -4px rgb(184 184 184 / 80%)">
             <ul class="inline-flex py-1">
-        @foreach($alphabetArray as $letter)
-                <form class="inline" action="{{ route('alphabetsearch', $letter) }}" method="get">
-                    <li>
-                        <button type="submit"
-                                class="transform transition focus:outline-none duration-150 hover:scale-150 text-xl text-black px-2">{{ $letter }}</button>
-                    </li>
-                </form>
-            @endforeach
+                @foreach($alphabetArray as $letter)
+                    <form class="inline" action="{{ route('alphabetsearch', $letter) }}" method="get">
+                        <li>
+                            <button type="submit"
+                                    class="transform transition focus:outline-none duration-150 hover:scale-150 text-xl text-black px-2">{{ $letter }}</button>
+                        </li>
+                    </form>
+                @endforeach
             </ul>
         </div>
         <div class="hidden lg:inline xl:inline 2xl:inline bg-gray-200 rounded-xl overflow-y-hidden">
             <ul class="inline-flex py-1	">
-        @foreach($alphabetArray as $letter)
-                <form class="inline" action="{{ route('alphabetsearch', $letter) }}" method="get">
-                    <li>
-                        <button type="submit"
-                                class="transform transition focus:outline-none duration-150 hover:scale-150 text-xl text-black px-2">{{ $letter }}</button>
-                    </li>
-                </form>
-            @endforeach
+                @foreach($alphabetArray as $letter)
+                    <form class="inline" action="{{ route('alphabetsearch', $letter) }}" method="get">
+                        <li>
+                            <button type="submit"
+                                    class="transform transition focus:outline-none duration-150 hover:scale-150 text-xl text-black px-2">{{ $letter }}</button>
+                        </li>
+                    </form>
+                @endforeach
             </ul>
         </div>
-    @if(auth()->user()->isAdmin())
-        <div class="flex justify-center align-center shrink-0">
-            <button
-                class="p-1 bg-gray-200 border transform transition focus:outline-none duration-75 hover:scale-110 rounded-xl "
-                id="switch-button">
-                <span id="image-icon"><img class="w-full" src="/icons/image-icon.svg"></span>
-                <span class="hidden" id="table-icon"><img class="w-full" src="/icons/table-icon.svg"></span>
-            </button>
-        </div>
+        @if(auth()->user()->isAdmin())
+            <div class="flex justify-center align-center shrink-0">
+                <button
+                    class="p-1 bg-gray-200 border transform transition focus:outline-none duration-75 hover:scale-110 rounded-xl "
+                    id="switch-button">
+                    <span id="image-icon"><img class="w-full" src="/icons/image-icon.svg"></span>
+                    <span class="hidden" id="table-icon"><img class="w-full" src="/icons/table-icon.svg"></span>
+                </button>
+            </div>
         @else
             <div class="flex justify-center align-center shrink-0">
                 <button
                     class="p-1 bg-gray-200 border transform transition focus:outline-none duration-75 hover:scale-110 rounded-xl "
                     id="switch-button">
-                    <span class="hidden"  id="image-icon"><img class="w-full" src="/icons/image-icon.svg"></span>
+                    <span class="hidden" id="image-icon"><img class="w-full" src="/icons/image-icon.svg"></span>
                     <span id="table-icon"><img class="w-full" src="/icons/table-icon.svg"></span>
                 </button>
             </div>
@@ -76,19 +77,23 @@
                                     <div>
                                         <p>{{ $book->title }}</p>
                                     </div>
-                                    <div class="flex md:hidden lg:hidden xl:hidden 2xl:hidden justify-evenly gap-x-3 px-4 shrink-0">
+                                    <div
+                                        class="flex md:hidden lg:hidden xl:hidden 2xl:hidden justify-evenly gap-x-3 px-4 shrink-0">
                                         <a class="flex shrink-0 my-1 hover:bg-gray-200 active:bg-gray-300 rounded-xl p-2"
                                            href="{{ route('book.show', ['slug' => $book->slug] )}}">
-                                            <span class="flex shrink-0"><img src="{{URL::asset('/icons/view.svg')}}" alt="View Icon"></span>
+                                            <span class="flex shrink-0"><img src="{{URL::asset('/icons/view.svg')}}"
+                                                                             alt="View Icon"></span>
                                         </a>
                                         <a class="flex shrink-0 text-lg hover:bg-gray-200 active:bg-gray-300 rounded-xl p-2 my-1"
                                            href="{{ route('admin.book.edit', $book->id )}}">
-                                            <span class="flex shrink-0"><img src="{{URL::asset('/icons/edit.svg')}}" alt="Edit Icon"></span>
+                                            <span class="flex shrink-0"><img src="{{URL::asset('/icons/edit.svg')}}"
+                                                                             alt="Edit Icon"></span>
                                         </a>
                                         <a class="text-lg flex shrink-0 hover:bg-gray-200 active:bg-gray-300 rounded-xl p-2 my-1"
                                            href="{{ route('admin.book.destroy', $book->id )}}"
                                            onclick="return confirm('Are you sure you want to delete {{ $book->title }} from {{ $book->author->name }}?')">
-                                            <span class="flex shrink-0"><img src="{{URL::asset('/icons/bin.svg')}}" alt="Delete Icon"></span>
+                                            <span class="flex shrink-0"><img src="{{URL::asset('/icons/bin.svg')}}"
+                                                                             alt="Delete Icon"></span>
                                         </a>
                                     </div>
                                 </div>
@@ -107,12 +112,14 @@
                                     </a>
                                     <a class="flex shrink-0 text-lg hover:bg-gray-200 active:bg-gray-300 rounded-xl p-2 my-1"
                                        href="{{ route('admin.book.edit', $book->id )}}">
-                                     <span class="flex shrink-0"><img src="{{URL::asset('/icons/edit.svg')}}" alt="Edit Icon"></span>
+                                        <span class="flex shrink-0"><img src="{{URL::asset('/icons/edit.svg')}}"
+                                                                         alt="Edit Icon"></span>
                                     </a>
                                     <a class="text-lg flex shrink-0 hover:bg-gray-200 active:bg-gray-300 rounded-xl p-2 my-1"
                                        href="{{ route('admin.book.destroy', $book->id )}}"
                                        onclick="return confirm('Are you sure you want to delete {{ $book->title }} from {{ $book->author->name }}?')">
-                                       <span class="flex shrink-0"><img src="{{URL::asset('/icons/bin.svg')}}" alt="Delete Icon"></span>
+                                        <span class="flex shrink-0"><img src="{{URL::asset('/icons/bin.svg')}}"
+                                                                         alt="Delete Icon"></span>
                                     </a>
                                 </div>
                             </td>
@@ -138,7 +145,7 @@
                         <a href="{{ route('book.show', ['slug' => $book->slug]) }}">
                             <img id="book-cover-image" class="flex flex-shrink-0 transition duration-150 ease-in-out transform hover:scale-110
                         rounded-md shadow-lg h-48 w-32 md:h-60 md:w-40 lg:h-60 lg:w-40 xl:h-72 xl:w-48 2xl:h-80 2xl:w-52 mb-3"
-                                 src="{{ secure_asset($book->image()) }}" alt="{{ $book->title }}">
+                                 src="{{ asset($book->image()) }}" alt="{{ $book->title }}">
                         </a>
                         <span
                             class="mx-2 mb-5 sm:mx-2 md:mx-5 lg:mx-5 xl:mx-5 2xl:mx-5 text-base md:text-lg lg:text-lg xl:text-lg 2xl:text-lg"><h1>{{ $book->title }}</h1></span>
@@ -220,7 +227,8 @@
             </div>
         </div>
 
-        <div id="image-view" class="grid xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 grid-cols-2 justify-items-center gap-3 py-12 p-2">
+        <div id="image-view"
+             class="grid xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 grid-cols-2 justify-items-center gap-3 py-12 p-2">
             @forelse($books as $book)
                 <div class="">
                     <div class="grid justify-items-center sm:w-32 md:w-52 lg:w-52 xl:w-52 2xl:w-52">

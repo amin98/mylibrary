@@ -27,11 +27,11 @@ module.exports = {
             current: "currentColor",
             black: colors.black,
             white: colors.white,
-            "blue-gray": colors.blueGray,
-            "cool-gray": colors.coolGray,
+            "blue-gray": colors.slate,
+            "cool-gray": colors.gray,
             gray: colors.gray,
-            "true-gray": colors.trueGray,
-            "warm-gray": colors.warmGray,
+            "true-gray": colors.neutral,
+            "warm-gray": colors.stone,
             red: colors.red,
             orange: colors.orange,
             amber: colors.amber,
@@ -51,8 +51,4 @@ module.exports = {
             rose: colors.rose,
         },
     },
-
-    plugins: [
-        require('@tailwindcss/ui'),
-    ]
 }

@@ -176,19 +176,6 @@ class DatabaseSeeder extends Seeder
             'image' => 'images/harry-potter-and-the-deathly-hallows.jpg',
         ]);
 
-        Book::create([
-            'author_id' => 6,
-            'genre_id' => 4,
-            'title' => 'Alice in Wonderland',
-            'blurb' => 'The Hunting of the Snark, subtitled An Agony in 8 Fits, is a poem by the English writer Lewis Carroll.
-            It is typically categorised as a nonsense poem. Written between 1874 and 1876, it borrows the setting, some creatures,
-            and eight portmanteau words from Carroll\'s earlier poem "Jabberwocky" in his children\'s novel Through the Looking-Glass (1871).
-            The narrative follows a crew of ten trying to hunt the Snark, a creature which may turn out to be a highly dangerous Boojum.
-            The only crewmember to find the Snark quietly vanishes, leading the narrator to explain that the Snark was a Boojum after all.
-            The poem is dedicated to young Gertrude Chataway, whom Carroll met at the English seaside town Sandown in the Isle of Wight in 1875.
-            Included with many copies of the first edition of the poem was Carroll\'s religious tract, An Easter Greeting to Every Child Who Loves "Alice".',
-            'image' => 'images/alice-in-wonderland.jpg',
-        ]);
 
         Book::create([
             'author_id' => 6,

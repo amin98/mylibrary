@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{--    @dd((auth()->user()->isBlackListed()))--}}
+    {{--    @dd((auth()->user()->isBlackListed()))--}}
     <div class="grid justify-items-center">
         @if(Session::has('success'))
             <div
@@ -49,8 +49,12 @@
         md:border lg:border xl:border 2xl:border md:my-10 lg:my-10 xl:my-10 rounded-xl shadow">
             <div class="flex justify-center lg:grid lg:justify-items-center lg:col-span-2 xl:col-span-2 2xl:col-span-2
               sm:pb-3 md:p-3">
-                <img class="rounded-md shadow-lg h-80 w-52" src="{{ secure_asset($book->image()) }}"
-                     alt="{{ $book->title }} ">
+                @if(isset($book) && $book->image)
+                    <img class="rounded-md shadow-lg h-80 w-52" src="{{ asset($book->image()) }}"
+                         alt="{{ $book->title }}">
+
+                @endif
+
             </div>
             <div class="flex flex-col justify-center  lg:col-span-4 xl:col-span-4 2xl:col-span-4">
                 <h1 class="text-2xl text-center pb-2.5 pt-1.5">{{ $book->title }}</h1>

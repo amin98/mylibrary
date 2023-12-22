@@ -1,10 +1,10 @@
-    <!doctype html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- CSRF Token -->
+    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{--    <title>{{ config('app.name', 'Library') }}</title>--}}
@@ -13,34 +13,34 @@
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 
-{{--    <link rel="stylesheet" href="/css/bootstrap.css">--}}
-{{--    <link rel="stylesheet" href="/css/style.css">--}}
+    {{--    <link rel="stylesheet" href="/css/bootstrap.css">--}}
+    {{--    <link rel="stylesheet" href="/css/style.css">--}}
 
-<!-- Scripts -->
+    <!-- Scripts -->
+    {{--    <script src="{{ mix('js/app.js') }}" defer></script>--}}
 
-
-<!-- Styles -->
+    <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-{{--    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">--}}
+    {{--    <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">--}}
 </head>
 
 <body class=" bg-gray-100 h-screen antialiased leading-none font-sans">
 <div id="app">
-{{--    @dd(auth()->user())--}}
+    {{--    @dd(auth()->user())--}}
     @php
-                $cookie = Cookie::get('wishlist');
-                $cookieArray = explode(',', json_decode($cookie));
-                $newArray = array_filter($cookieArray);
+        $cookie = Cookie::get('wishlist');
+        $cookieArray = explode(',', json_decode($cookie));
+        $newArray = array_filter($cookieArray);
     @endphp
 
     <div class="relative min-h-screen md:flex lg:flex xl:flex 2xl:flex">
 
-    <!-- mobile menu bar -->
+        <!-- mobile menu bar -->
         <div class="bg-blue-900 text-gray-100 flex justify-between md:hidden lg:hidden xl:hidden 2xl:hidden">
-        <!-- logo -->
+            <!-- logo -->
             <a href="{{ route('home') }}" class="block p-4 text-white">Library</a>
 
-        <!-- mobile menu button -->
+            <!-- mobile menu button -->
             <button class="mobile-menu-button p-4 focus:outline-none">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                      stroke="currentColor">
@@ -48,23 +48,23 @@
                 </svg>
             </button>
         </div>
-    <!-- sidebar -->
+        <!-- sidebar -->
         <div
             class="sidebar z-50 bg-blue-900 text-blue-100 w-56 space-y-6 py-7 px-2 inset-y-0 left-0 transform
                 -translate-x-full  md:translate-x-0 lg:translate-x-0 absolute md:fixed lg:fixed xl:fixed 2xl:fixed
                     xl:translate-x-0 2xl:translate-x-0
                         transition duration-200 ease-in-out">
-        <!-- logo -->
+            <!-- logo -->
             <a href="{{ route('books.index') }}" class="text-white flex flex-row items-center space-x-2 px-4">
                 <span class="text-2xl pr-0.5">Library</span>
                 {{--                <img class="w-7 h-7 mt-1" src="/img/book.ico" alt="book icon">--}}
             </a>
-        <!-- nav -->
+            <!-- nav -->
             <nav>
-            @guest
+                @guest
                     <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
                        href="{{ route('login') }}">{{ __('Login') }}</a>
-                @if (Route::has('register'))
+                    @if (Route::has('register'))
                         <a class="block py-2.5 px-4 rounded transition duration-200 hover:bg-blue-700 hover:text-white"
                            href="{{ route('register') }}">{{ __('Register') }}</a>
                     @endif
@@ -106,7 +106,8 @@
                             <p>Cart</p>
                             <p>
                                 @if(!empty(Session::get('loansCart')))
-                                    <span class="animate-ping absolute inline-flex mt-0.5 pr-1.5 h-3.5 w-3.5 rounded-full bg-sky-400 opacity-75"></span>
+                                    <span
+                                        class="animate-ping absolute inline-flex mt-0.5 pr-1.5 h-3.5 w-3.5 rounded-full bg-sky-400 opacity-75"></span>
                                     <span class="pl-0.5">{{ count(Session::get('loansCart')) }}</span>
 
                                 @endif
@@ -118,8 +119,9 @@
                         <div class="flex justify-between">
                             <p>Wishlist</p>
                             <p class="flex ">
-                            @if(!empty($newArray))
-                                    <span class="animate-ping absolute inline-flex mt-0.5 pr-1.5 h-3.5 w-3.5 rounded-full bg-blue-400 opacity-75"></span>
+                                @if(!empty($newArray))
+                                    <span
+                                        class="animate-ping absolute inline-flex mt-0.5 pr-1.5 h-3.5 w-3.5 rounded-full bg-blue-400 opacity-75"></span>
                                     <span class="pl-0.5">{{ count($newArray) }}</span>
                                 @endif
                             </p>
@@ -177,7 +179,7 @@
         {{--        @endauth--}}
     </div>
 </div>
-<script src="/js/app.js" defer></script>
+<script src="js/app.js" defer></script>
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>

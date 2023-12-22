@@ -11,16 +11,16 @@
                         class="pl-8 py-1 text-left text-md font-medium text-white uppercase tracking-wider">
                         Title
                     </th>
-                    @if(count($books))
-                        <th scope="col"
-                            class="hidden md:table-cell	lg:table-cell xl:table-cell 2xl:table-cell pl-4 py-1 text-left text-md font-medium text-white uppercase tracking-wider">
-                            Author
-                        </th>
-                        <th scope="col"
-                            class="hidden md:table-cell	lg:table-cell xl:table-cell 2xl:table-cell pl-4 py-1 text-left text-md font-medium text-white uppercase tracking-wider">
-                            Genre
-                        </th>
-                    @endif
+                    {{--                    @if(count($books))--}}
+                    {{--                        <th scope="col"--}}
+                    {{--                            class="hidden md:table-cell	lg:table-cell xl:table-cell 2xl:table-cell pl-4 py-1 text-left text-md font-medium text-white uppercase tracking-wider">--}}
+                    {{--                            Author--}}
+                    {{--                        </th>--}}
+                    {{--                        <th scope="col"--}}
+                    {{--                            class="hidden md:table-cell	lg:table-cell xl:table-cell 2xl:table-cell pl-4 py-1 text-left text-md font-medium text-white uppercase tracking-wider">--}}
+                    {{--                            Genre--}}
+                    {{--                        </th>--}}
+                    {{--                    @endif--}}
                     <th scope="col"
                         class="hidden md:table-cell	lg:table-cell xl:table-cell 2xl:table-cell pl-2 py-1 text-md font-medium text-white uppercase tracking-wider">
                         Count
@@ -35,7 +35,8 @@
                                 <div class="py-2.5">
                                     <p>{{ $book->title }}</p>
                                 </div>
-                                <div class="flex justify-evenly gap-x-3 shrink-0 md:hidden lg:hidden xl:hidden 2xl:hidden">
+                                <div
+                                    class="flex justify-evenly gap-x-3 shrink-0 md:hidden lg:hidden xl:hidden 2xl:hidden">
                                     <a class="text-3xl"
                                        href="{{ route('admin.book_copies.store', $book->id) }}">
                                         +
@@ -62,10 +63,10 @@
                         @endif
                         <td class="hidden  md:table-cell lg:table-cell xl:table-cell 2xl:table-cell px-3 py-2 whitespace-nowrap text-md text-gray-900 flex justify-evenly align-center">
                             <div class="flex justify-evenly gap-x-3 shrink-0 ">
-                            <a class="text-3xl"
-                               href="{{ route('admin.book_copies.store', $book->id) }}">+</a>
-                            <p class="p-3">{{ $book->book_copies_count }}</p>
-                            <a class="text-3xl" href="{{ route('admin.book_copies.destroy', $book->id) }}">-</a>
+                                <a class="text-3xl"
+                                   href="{{ route('admin.book_copies.store', $book->id) }}">+</a>
+                                <p class="p-3">{{ $book->book_copies_count }}</p>
+                                <a class="text-3xl" href="{{ route('admin.book_copies.destroy', $book->id) }}">-</a>
                             </div>
                         </td>
                     </tr>

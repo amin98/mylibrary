@@ -64,15 +64,14 @@ class BookController extends Controller
             'author_id' => 'required',
             'genre_id' => 'required',
             'blurb' => 'required',
-            'image' => 'required|image',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         //Create variable in which title is slugged
         $imageName = Str::slug($validatedData['title']);
 
         //Get file from the request() method and store it in the images folder with the file name as the $imageName variable
-        $validatedData['image'] = request()->file('image')->storeAs('images', $imageName . '.jpg');
-
+        $validatedData['image'] = request()->file('image')->storeAs('images', $imageName . '.jpg', 'public');
         //Create new Book object with the validated data
         Book::create($validatedData);
 
@@ -141,7 +140,7 @@ class BookController extends Controller
         //check if image is already set
         //Get file from the request() method and store it in the images folder with the file name as the $imageName variable
         if(isset($validatedData['image'])){
-            $validatedData['image'] = request()->file('image')->storeAs('images', $imageName . '.jpg');
+            $validatedData['image'] = request()->file('image')->storeAs('images', $imageName . '.jpg', 'public');
         }
 
         //Update the book object using the validated data inside the update() method

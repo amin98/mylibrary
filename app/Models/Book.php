@@ -48,7 +48,14 @@ class Book extends Model
     public function image()
     {
         return 'assets/' . $this->image;
+//        return asset('storage/assets/images/' . $this->image);
+
     }
+//    public function image()
+//    {
+//        return '/images/' . $this->image;
+//    }
+
 
     //One To Many relationship with the BookCopy objects
     public function bookCopies(): HasMany
